@@ -14,11 +14,15 @@ export function Item() {
           border="2px solid #100B16"
           direction="column"
           w="250px"
+          _hover={{
+            filter: "brightness(0.7)"
+          }}
         >
           <Flex>
 
             <Flex
               marginTop="-10px"
+              marginStart="-24px"
               bg="#535662"
               w="46.69px"
               h="48.35px"
@@ -26,8 +30,8 @@ export function Item() {
               transform="rotate(-43deg)"
               alignItem="center"
               justifyContent="center"
-              marginEnd="130px"
-              borderRadius="10px"
+              marginEnd="150px"
+              borderRadius="12px"
             >
               <Text
                 fontSize="22px"
@@ -48,6 +52,7 @@ export function Item() {
             >
               Fire
             </Flex>
+
           </Flex>
 
           <Flex
@@ -82,8 +87,11 @@ export function Item() {
                 Charmander
               </Text>
             </Flex>
+
           </Flex>
+
         </Flex>
+
       </Flex>
     </>
   )
