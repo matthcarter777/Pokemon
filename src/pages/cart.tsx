@@ -19,9 +19,9 @@ import {
   AlertDialogHeader ,
   AlertDialogContent ,
   AlertDialogOverlay ,
-  Select 
+  Image 
 } from "@chakra-ui/react";
-import { RiEyeLine, RiDeleteBin5Line } from "react-icons/ri";
+import { RiEyeFill, RiDeleteBin5Line } from "react-icons/ri";
 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -85,21 +85,39 @@ export default function Home() {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr bg="#fff">
+                <Tr bg="#fff" >
                   <Td>
-                      <Box>
-                          <Text fontWeight="bold">TESTE</Text>
+                      <Box
+                        w="60px"
+                        h="60px"
+                        border="2px solid #100B16"
+                      >
+                          <Image 
+                            src="https://w7.pngwing.com/pngs/156/686/png-transparent-pokemon-go-pokemon-x-and-y-ash-ketchum-charmander-pokemon-background-orange-cartoon-fictional-character.png" 
+                            alt="Image"
+                            w="50px"
+                            h="50px"
+                          />
                       </Box>
                   </Td>
                   <Td>
                       <Box>
-                          <Text fontWeight="bold">TESTE</Text>
+                          <Text fontWeight="bold" fontSize="20px" color="#535662">Charmander</Text>
                       </Box>
                   </Td>
                   <Td>
-                      <Box>
-                          <Text fontWeight="bold">TESTE</Text>
-                      </Box>
+                    <Flex>
+                      <Flex
+                        h="30px"
+                        w="52px"
+                        background="#F25D52"
+                        borderRadius="5px"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <Text fontWeight="bold">Fire</Text>
+                      </Flex>
+                    </Flex>
                   </Td>
                   <Td>
                       <Box>
@@ -113,7 +131,7 @@ export default function Home() {
                               colorScheme=" #49DBDF;"
                               marginEnd="15px"
                             >
-                              <Icon as={RiEyeLine} fontSize="30" />
+                              <Icon as={RiEyeFill} fontSize="30" />
                             </Button>
                             <Button
                               as="a"
@@ -129,6 +147,7 @@ export default function Home() {
                       </Box>
                   </Td>
                 </Tr>
+
               </Tbody>
             
             </Table> 
