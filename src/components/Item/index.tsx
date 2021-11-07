@@ -1,7 +1,12 @@
 import { Flex, Text, Image } from '@chakra-ui/react';
 
 
-export function Item() {
+type ItemProps = {
+  name: string;
+  urlImage: string;
+}
+
+export function Item({ name, urlImage }: ItemProps) {
 
   return (
     <>
@@ -28,7 +33,7 @@ export function Item() {
               h="48.35px"
               border="2px solid #100B16"
               transform="rotate(-43deg)"
-              alignItem="center"
+              alignItems="center"
               justifyContent="center"
               marginEnd="150px"
               borderRadius="12px"
@@ -64,7 +69,7 @@ export function Item() {
             <Image
               w="200px"
               h="160px" 
-              src="https://w7.pngwing.com/pngs/156/686/png-transparent-pokemon-go-pokemon-x-and-y-ash-ketchum-charmander-pokemon-background-orange-cartoon-fictional-character.png"
+              src={urlImage}
               alt="Pockemon"
             />
           </Flex>
@@ -84,7 +89,7 @@ export function Item() {
               borderRadius="15px"
             >
               <Text fontSize="20px">
-                Charmander
+                {name}
               </Text>
             </Flex>
 
