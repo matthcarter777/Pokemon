@@ -1,4 +1,6 @@
-import { Flex, Text, Image } from '@chakra-ui/react';
+import { Flex, Text, Image, Button, Icon  } from '@chakra-ui/react';
+
+import { RiEyeFill, RiAddLine } from "react-icons/ri";
 
 
 type ItemProps = {
@@ -72,6 +74,8 @@ export function Item({ name, urlImage }: ItemProps) {
               src={urlImage}
               alt="Pockemon"
             />
+
+
           </Flex>
           
           <Flex
@@ -95,7 +99,40 @@ export function Item({ name, urlImage }: ItemProps) {
 
           </Flex>
 
+          <Flex
+            h="245px"
+            w="245px"
+            position="absolute"
+            alignItems="center"
+            justifyContent="center"
+
+          >
+            <Button
+              as="a"
+              size="sm"
+              h="50px"
+              w="50px"
+              borderRadius="50%"
+              colorScheme=" #49DBDF;"
+              marginEnd="15px"
+            >
+              <Icon as={RiEyeFill} fontSize="30" />
+            </Button>
+            <Button
+              as="a"
+              size="sm"
+              h="50px"
+              w="50px"
+              borderRadius="50%"
+              colorScheme=" #3AA05B;"
+              marginEnd="15px"
+            >
+              <Icon as={RiAddLine} fontSize="30" />
+            </Button>
+    
+          </Flex>
         </Flex>
+
 
       </Flex>
     </>

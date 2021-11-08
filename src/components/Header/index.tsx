@@ -1,7 +1,13 @@
-import { Flex, Box, Button, Input, Image } from "@chakra-ui/react";
+import { Flex, Box, Button, Text, Image } from "@chakra-ui/react";
 import { Filter } from "./Filter";
 
+import { useAuth } from '../../hooks/useLogin';
+
 export function Header() {
+
+  const isLogger = false;
+
+  const { openModal } = useAuth();
   
   return (
     <Flex
@@ -20,7 +26,12 @@ export function Header() {
         src="https://github.com/FernandoRidam/pokemon/blob/master/src/assets/logo.png?raw=true" alt="logo" />
       <Filter />
       
-      <Button
+      { isLogger ? 
+        <Text as="a" href="/cart" margin="20px">
+          Mateus
+        </Text>
+        : 
+        <Button
         bg="#7E7394"
         border="2px solid #000"
         marginEnd="10"
@@ -28,9 +39,12 @@ export function Header() {
         borderRadius="10px"
         w="113px"
         h="42px"
-      >
+        onClick={() => openModal()}
+        >
         Login
-      </Button>
+        </Button> 
+      }
+
       <Box>
         COMPETI
       </Box>
