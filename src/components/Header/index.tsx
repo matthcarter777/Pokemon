@@ -1,13 +1,11 @@
 import { Flex, Box, Button, Text, Image } from "@chakra-ui/react";
-import { Filter } from "./Filter";
 
+import { Filter } from "./Filter";
 import { useAuth } from '../../hooks/useLogin';
 
 export function Header() {
 
-  const isLogger = false;
-
-  const { openModal } = useAuth();
+  const { openModal, isLogger, user } = useAuth();
   
   return (
     <Flex
@@ -28,7 +26,7 @@ export function Header() {
       
       { isLogger ? 
         <Text as="a" href="/cart" margin="20px">
-          Mateus
+          { user }
         </Text>
         : 
         <Button

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { 
   Box, 
   Text, 
@@ -22,12 +23,15 @@ import {
   Image 
 } from "@chakra-ui/react";
 import { RiEyeFill, RiDeleteBin5Line } from "react-icons/ri";
+import { GetStaticProps } from 'next';
 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { useAuth } from "../hooks/useLogin";
 
 
 export default function Home() {
+
   return (
     <Flex 
       direction="column" 

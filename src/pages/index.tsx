@@ -24,7 +24,11 @@ export default function Home() {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   
-  const { openModal, isOpen, closeModal } = useAuth();
+  const { openModal, isOpen, closeModal, login } = useAuth();
+ 
+  async function loginForm() {
+    const res = await login({ user, password });
+  }
 
 
   return (
@@ -90,15 +94,6 @@ export default function Home() {
   
         </Flex>
 
-
-
-
-      </Flex>
-      <Flex
-        padding="50"
-        width="100%"
-      >
-
       </Flex>
 
       <Footer />
@@ -123,7 +118,9 @@ export default function Home() {
               <Input  
                 type="text" 
                 placeholder="Usuarios" 
-                marginBottom="10px" 
+                marginBottom="10px"
+                value={user}
+                onChange={event => setUser(event.target.value) }
                 color="#7E7394"
                 _placeholder={{
                   color:"#7E7394;" 
@@ -131,7 +128,9 @@ export default function Home() {
               />
               <Input  
                 type="password" 
-                placeholder="Senha"  
+                placeholder="Senha"
+                value={password}
+                onChange={event => setPassword(event.target.value) }  
                 color="#7E7394"
                 _placeholder={{
                   color:"#7E7394;" 
@@ -146,7 +145,7 @@ export default function Home() {
               <Button 
                 colorScheme="#3AA05B;" 
                 onClick={() => 
-                  console.log('login')
+                  loginForm()
                 } 
                 ml={3}>
                 Entrar
