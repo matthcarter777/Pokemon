@@ -1,28 +1,20 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import Slider from 'react-slick';
-import { Flex, Text, Select } from '@chakra-ui/react';
 
 import { Item } from "../Item";
-
-
+import { CarrouselItem } from "./carrouselItem";
 
 export function CarouselComponent () {
-
 
   return (
     <Slider 
       dots={true} 
       infinite={true} 
       speed={500} 
-      slidesToShow={5} 
-      slidesToScroll={2}
+      slidesToShow={1} 
+      slidesToScroll={1}
     >
-      <Item name="Teste 1" urlImage="#" />
-      <Item name="Teste 2" urlImage="#" />
-      <Item name="Teste 3" urlImage="#" />
-      <Item name="Teste 4" urlImage="#" />
-      <Item name="Teste 5" urlImage="#" />
+      <CarrouselItem name="Teste" urlImage="https://w7.pngwing.com/pngs/156/686/png-transparent-pokemon-go-pokemon-x-and-y-ash-ketchum-charmander-pokemon-background-orange-cartoon-fictional-character.png" level="4" />
     </Slider>
   )
 }

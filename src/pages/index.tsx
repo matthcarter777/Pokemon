@@ -103,9 +103,13 @@ export default function Home() {
   
         </Flex>
 
+      <Flex>
+        <CarouselComponent />
+      </Flex>
       </Flex>
 
       <Footer />
+
 
       <AlertDialog
         isOpen={isOpen}
