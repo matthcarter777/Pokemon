@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { 
   Flex, 
   Text, 
@@ -11,7 +12,7 @@ import {
   AlertDialogOverlay ,
   Input
 } from '@chakra-ui/react';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -24,7 +25,15 @@ export default function Home() {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   
-  const { openModal, isOpen, closeModal, login } = useAuth();
+  const { openModal, isOpen, closeModal, login, loggedIn } = useAuth();
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
+  async function getUser() {
+    await loggedIn()
+  }
  
   async function loginForm() {
     const res = await login({ user, password });

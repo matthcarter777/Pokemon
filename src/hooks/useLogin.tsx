@@ -9,6 +9,7 @@ type AuthContextData = {
   isOpen: boolean;
   openModal(): Promise<void>;
   closeModal(): Promise<void>;
+  loggedIn(): Promise<void>;
   login(user: UserAuthData): Promise<Boolean>;
   isLogger: boolean;
   user: string;
@@ -34,26 +35,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsOpen(false)
   }
 
-  async function login(user: UserAuthData) {
-
+  async function loggedIn() {
+    console.log('logado')
     const logged = localStorage.getItem('@poke:logged');
     const localUser = localStorage.getItem('@poke:user');
   
     if( logged && localUser ) {
       setIsLogger(true);
-      setIsOpen(false);
       setUser(localUser);
 
       return;
     }
+  }
 
-    setUser(localUser);
+  async function login(user: UserAuthData) {
 
     const userData = {
       user: 'competi',
       password: '123456'
     }
-
 
     if(userData.user === user.user && userData.password === user.password) {
       setIsLogger(true);
@@ -72,7 +72,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return(
-    <AuthContext.Provider value={{ openModal, isOpen, closeModal, login, isLogger, user }}>
+    <AuthContext.Provider value={{ openModal, isOpen, closeModal, login, isLogger, user, loggedIn }}>
       {children}
     </AuthContext.Provider>
   )

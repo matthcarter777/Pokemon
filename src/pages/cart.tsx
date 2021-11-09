@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { 
   Box, 
@@ -23,7 +24,7 @@ import {
   Image 
 } from "@chakra-ui/react";
 import { RiEyeFill, RiDeleteBin5Line } from "react-icons/ri";
-import { GetStaticProps } from 'next';
+import { useEffect } from "react";
 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -31,6 +32,16 @@ import { useAuth } from "../hooks/useLogin";
 
 
 export default function Home() {
+
+  const { loggedIn } = useAuth();
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
+  async function getUser() {
+    await loggedIn()
+  }
 
   return (
     <Flex 
