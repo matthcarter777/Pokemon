@@ -72,7 +72,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return(
-    <AuthContext.Provider value={{ openModal, isOpen, closeModal, login, isLogger, user, loggedIn }}>
+    <AuthContext.Provider 
+      value={{ 
+        openModal, 
+        isOpen, 
+        closeModal, 
+        login, 
+        isLogger, 
+        user, 
+        loggedIn 
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )

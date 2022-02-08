@@ -29,14 +29,19 @@ import { useEffect } from "react";
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useAuth } from "../hooks/useLogin";
+import { usePokedexContext } from '../hooks/usePokedex';
 
 
 export default function Home() {
 
   const { loggedIn } = useAuth();
+  const { pokemons, loadPokemons } = usePokedexContext();
+
+  console.log({ pokemon: pokemons})
 
   useEffect(() => {
     getUser();
+    loadPokemons();
   }, [])
 
   async function getUser() {
@@ -100,7 +105,7 @@ export default function Home() {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr bg="#fff" >
+                <Tr bg="#fff">
                   <Td>
                       <Box
                         w="60px"
