@@ -102,10 +102,6 @@ export default function Home() {
           </Flex>
   
         </Flex>
-
-      <Flex>
-        <CarouselComponent />
-      </Flex>
       </Flex>
 
       <Footer />
