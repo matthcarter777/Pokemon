@@ -14,6 +14,7 @@ interface PokemonCartContextProps {
 interface PokemonCartContextData {
   pokemons: PokemonItem[];
   loadPokemons: () => void;
+  removePokemon: (id: string) => void;
 }
 
 const PokedexContext = createContext<PokemonCartContextData>({} as PokemonCartContextData);
@@ -32,11 +33,18 @@ export function PokedexProvider({ children }: PokemonCartContextProps) {
     setPokemons(pokemonData);
   }
 
+  function removePokemon(id: string) {
+    const findPokemon = pokemons.filter(pokemon => pokemon.id !== id);
+
+    setPokemons(findPokemon);
+  }
+
   return(
     <PokedexContext.Provider
       value={{
         pokemons,
-        loadPokemons
+        loadPokemons,
+        removePokemon
       }}
     >
       { children }

@@ -35,9 +35,7 @@ import { usePokedexContext } from '../hooks/usePokedex';
 export default function Home() {
 
   const { loggedIn } = useAuth();
-  const { pokemons, loadPokemons } = usePokedexContext();
-
-  console.log({ pokemon: pokemons})
+  const { pokemons, loadPokemons, removePokemon } = usePokedexContext();
 
   useEffect(() => {
     getUser();
@@ -95,7 +93,10 @@ export default function Home() {
           <Flex
             padding="50"
           >
-            <Table colorScheme="whiteAlpha">
+
+            <Table 
+              colorScheme="whiteAlpha"
+            >
               <Thead>
                 <Tr>
                   <Th>Foto</Th>
@@ -105,68 +106,82 @@ export default function Home() {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr bg="#fff">
-                  <Td>
-                      <Box
-                        w="60px"
-                        h="60px"
-                        border="2px solid #100B16"
-                      >
-                          <Image 
-                            src="https://w7.pngwing.com/pngs/156/686/png-transparent-pokemon-go-pokemon-x-and-y-ash-ketchum-charmander-pokemon-background-orange-cartoon-fictional-character.png" 
-                            alt="Image"
-                            w="50px"
-                            h="50px"
-                          />
-                      </Box>
-                  </Td>
-                  <Td>
-                      <Box>
-                          <Text fontWeight="bold" fontSize="20px" color="#535662">Charmander</Text>
-                      </Box>
-                  </Td>
-                  <Td>
-                    <Flex>
-                      <Flex
-                        h="30px"
-                        w="52px"
-                        background="#F25D52"
-                        borderRadius="5px"
-                        alignItems="center"
-                        justifyContent="center"
-                      >
-                        <Text fontWeight="bold">Fire</Text>
-                      </Flex>
-                    </Flex>
-                  </Td>
-                  <Td>
-                      <Box>
+
+                { pokemons.map( pokemon => {
+                  return (
+                    <Tr 
+                      key={pokemon.id}
+                    >
+
+                      <Td px={["4", "4", "6"]}>
+                          <Box
+                            w="60px"
+                            h="60px"
+                            border="2px solid #100B16"
+                          >
+                            <Image 
+                              src={pokemon.img}
+                              alt="Image"
+                              w="50px"
+                              h="50px"
+                            />
+                          </Box>
+                      </Td>
+
+                      
+                      <Td>
+                          <Box>
+                              <Text fontWeight="bold" fontSize="20px" color="#535662">{ pokemon.name }</Text>
+                          </Box>
+                      </Td>
+   
+                      <Td>
                         <Flex>
-                          <Button
-                              as="a"
-                              size="sm"
-                              h="50px"
-                              w="50px"
-                              borderRadius="50%"
-                              colorScheme=" #49DBDF;"
-                              marginEnd="15px"
-                            >
-                              <Icon as={RiEyeFill} fontSize="30" />
-                            </Button>
-                            <Button
-                              as="a"
-                              size="sm"
-                              h="50px"
-                              w="50px"
-                              borderRadius="50%"
-                              colorScheme="red"
-                            >
-                              <Icon as={RiDeleteBin5Line} fontSize="30" />
-                            </Button>
+                          <Flex
+                            h="30px"
+                            w="52px"
+                            background="#F25D52"
+                            borderRadius="5px"
+                            alignItems="center"
+                            justifyContent="center"
+                          >
+                            <Text fontWeight="bold"> { pokemon.type } </Text>
+                          </Flex>
                         </Flex>
-                      </Box>
-                  </Td>
-                </Tr>
+                      </Td>
+
+                      <Td>
+                          <Box>
+                            <Flex>
+                              <Button
+                                  as="a"
+                                  size="sm"
+                                  h="50px"
+                                  w="50px"
+                                  borderRadius="50%"
+                                  colorScheme=" #49DBDF;"
+                                  marginEnd="15px"
+                                >
+                                  <Icon as={RiEyeFill} fontSize="30" />
+                                </Button>
+                                <Button
+                                  as="a"
+                                  size="sm"
+                                  h="50px"
+                                  w="50px"
+                                  borderRadius="50%"
+                                  colorScheme="red"
+                                  onClick={() => removePokemon(pokemon.id)}
+                                >
+                                  <Icon as={RiDeleteBin5Line} fontSize="30" />
+                                </Button>
+                            </Flex>
+                          </Box>
+                      </Td>
+
+                    </Tr>
+                  )
+                }) }
 
               </Tbody>
             
