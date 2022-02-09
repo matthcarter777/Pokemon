@@ -42,6 +42,7 @@ export default function Home() {
     loadPokemons();
   }, [])
 
+
   async function getUser() {
     await loggedIn()
   }
@@ -113,22 +114,21 @@ export default function Home() {
                       key={pokemon.id}
                     >
 
-                      <Td px={["4", "4", "6"]}>
-                          <Box
-                            w="60px"
-                            h="60px"
-                            border="2px solid #100B16"
-                          >
-                            <Image 
-                              src={pokemon.img}
-                              alt="Image"
-                              w="50px"
-                              h="50px"
-                            />
-                          </Box>
+                      <Td>
+                        <Box
+                          w="60px"
+                          h="60px"
+                          border="2px solid #100B16"
+                        >
+                          <Image 
+                            src={pokemon.img}
+                            alt="Image"
+                            w="50px"
+                            h="50px"
+                          />
+                        </Box>
                       </Td>
 
-                      
                       <Td>
                           <Box>
                               <Text fontWeight="bold" fontSize="20px" color="#535662">{ pokemon.name }</Text>

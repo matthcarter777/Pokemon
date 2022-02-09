@@ -19,17 +19,34 @@ import { Footer } from '../components/Footer';
 import { Item } from '../components/Item';
 import { CarouselComponent } from '../components/Carousel';
 import { useAuth } from '../hooks/useLogin';
+import { getTypes } from '../services/types';
+
+
+type Type = {
+  name: string;
+  url: string;
+}
 
 export default function Home() {
   const cancelRef = useRef();
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+  const [types, setTypes] = useState<Type[]>([] as Type[]);
   
   const { openModal, isOpen, closeModal, login, loggedIn } = useAuth();
 
   useEffect(() => {
     getUser();
-  }, [])
+    getTypes();
+
+    getData();
+  }, []);
+
+  async function getData() {
+    const typesByApi = await getTypes();
+
+    setTypes(typesByApi);
+  }
 
   async function getUser() {
     await loggedIn()
@@ -38,6 +55,8 @@ export default function Home() {
   async function loginForm() {
     const res = await login({ user, password });
   }
+
+
 
 
   return (
@@ -87,8 +106,11 @@ export default function Home() {
                 color="#535662"
                 bg="#fff"
               >
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                { types.map(type => {
+                  return (
+                    <option key={type.name} value={type.name}>{ type.name }</option>
+                  )
+                }) }
               </Select>
 
             </Flex>
