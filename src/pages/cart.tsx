@@ -84,7 +84,10 @@ export default function Home() {
               direction="column"
             >
 
-              <Text color="#535662">
+              <Text 
+                color="#535662"
+                fontWeight="bold"
+              >
                 Pokedex Usuário
               </Text>
               

@@ -44,7 +44,10 @@ export function Header() {
       }
 
       <Box>
-        COMPETI
+        <Image
+          src="https://raw.githubusercontent.com/FernandoRidam/pokemon/master/src/assets/competi.png" 
+          alt="logo"
+        />
       </Box>
     </Flex>
   )
