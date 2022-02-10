@@ -30,6 +30,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useAuth } from "../hooks/useLogin";
 import { usePokedexContext } from '../hooks/usePokedex';
+import { PokeList } from "../components/Pokelist";
 
 
 export default function Home() {
@@ -93,99 +94,30 @@ export default function Home() {
           
           <Flex
             padding="50"
+            display="flex"
+            flexDirection="column"
           >
-
-            <Table 
-              colorScheme="whiteAlpha"
-            >
-              <Thead>
-                <Tr>
-                  <Th>Foto</Th>
-                  <Th>Nome</Th>
-                  <Th>Tipo</Th>
-                  <Th width="8">Ação</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-
-                { pokemons.map( pokemon => {
-                  return (
-                    <Tr 
-                      key={pokemon.id}
-                    >
-
-                      <Td>
-                        <Box
-                          w="60px"
-                          h="60px"
-                          border="2px solid #100B16"
-                        >
-                          <Image 
-                            src={pokemon.img}
-                            alt="Image"
-                            w="50px"
-                            h="50px"
-                          />
-                        </Box>
-                      </Td>
-
-                      <Td>
-                          <Box>
-                              <Text fontWeight="bold" fontSize="20px" color="#535662">{ pokemon.name }</Text>
-                          </Box>
-                      </Td>
-   
-                      <Td>
-                        <Flex>
-                          <Flex
-                            h="30px"
-                            w="52px"
-                            background="#F25D52"
-                            borderRadius="5px"
-                            alignItems="center"
-                            justifyContent="center"
-                          >
-                            <Text fontWeight="bold"> { pokemon.type } </Text>
-                          </Flex>
-                        </Flex>
-                      </Td>
-
-                      <Td>
-                          <Box>
-                            <Flex>
-                              <Button
-                                  as="a"
-                                  size="sm"
-                                  h="50px"
-                                  w="50px"
-                                  borderRadius="50%"
-                                  colorScheme=" #49DBDF;"
-                                  marginEnd="15px"
-                                >
-                                  <Icon as={RiEyeFill} fontSize="30" />
-                                </Button>
-                                <Button
-                                  as="a"
-                                  size="sm"
-                                  h="50px"
-                                  w="50px"
-                                  borderRadius="50%"
-                                  colorScheme="red"
-                                  onClick={() => removePokemon(pokemon.id)}
-                                >
-                                  <Icon as={RiDeleteBin5Line} fontSize="30" />
-                                </Button>
-                            </Flex>
-                          </Box>
-                      </Td>
-
-                    </Tr>
-                  )
-                }) }
-
-              </Tbody>
             
-            </Table> 
+          <Flex
+            w="100%"
+            h="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+            color="#535662"
+            padding="20px"
+            fontSize="1.2rem"
+            fontWeight="bold"
+          >
+            <Text>Foto</Text>
+            <Text>Nome</Text>
+            <Text>Tipo</Text>
+            <Text>Ação</Text>
+          </Flex>
+
+
+            <PokeList />
+
         
           </Flex>
   
