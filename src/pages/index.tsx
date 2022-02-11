@@ -20,6 +20,7 @@ import { Item } from '../components/Item';
 import { CarouselComponent } from '../components/Carousel';
 import { useAuth } from '../hooks/useLogin';
 import { getTypes } from '../services/types';
+import { getPokemon } from '../services/pokemon';
 
 
 type Type = {
@@ -45,6 +46,10 @@ export default function Home() {
   async function getData() {
     const typesByApi = await getTypes();
 
+    const pokemons = await getPokemon(10, 1000);
+
+    console.log(pokemons)
+
     setTypes(typesByApi);
   }
 
@@ -55,9 +60,6 @@ export default function Home() {
   async function loginForm() {
     const res = await login({ user, password });
   }
-
-
-
 
   return (
     <Flex 
