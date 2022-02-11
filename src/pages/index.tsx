@@ -17,7 +17,6 @@ import { useRef, useState, useEffect } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Item } from '../components/Item';
-import { CarouselComponent } from '../components/Carousel';
 import { useAuth } from '../hooks/useLogin';
 import { getTypes } from '../services/types';
 import { getPokemon } from '../services/pokemon';
@@ -28,11 +27,30 @@ type Type = {
   url: string;
 }
 
+type Pokemon = {
+  id: string;
+  name: string;
+  type: string;
+  url_image: string;
+  species: string;
+  abilities: Abilities[];
+  moves: Moves[];
+}
+
+type Abilities = {
+  name: string;
+}
+
+type Moves = {
+  name: string;
+}
+
 export default function Home() {
   const cancelRef = useRef();
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [types, setTypes] = useState<Type[]>([] as Type[]);
+  const [pokemon, setPokemon] = useState<Pokemon[]>([] as Pokemon[]);
   
   const { openModal, isOpen, closeModal, login, loggedIn } = useAuth();
 
@@ -46,11 +64,12 @@ export default function Home() {
   async function getData() {
     const typesByApi = await getTypes();
 
-    const pokemons = await getPokemon(10, 1000);
-
-    console.log(pokemons)
+    const pokemons = await getPokemon(10, 3);
 
     setTypes(typesByApi);
+    setPokemon(pokemons);
+
+    console.log(pokemon);
   }
 
   async function getUser() {
@@ -122,7 +141,13 @@ export default function Home() {
           <Flex
             padding="50"
           >
-            <Item name="Charmander" urlImage="https://w7.pngwing.com/pngs/156/686/png-transparent-pokemon-go-pokemon-x-and-y-ash-ketchum-charmander-pokemon-background-orange-cartoon-fictional-character.png"/>
+
+            { pokemon.map(pokemon => {
+              return (
+                <Item key={pokemon.id} pokemon ={ pokemon}/>
+              )
+            }) }
+
           </Flex>
   
         </Flex>

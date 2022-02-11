@@ -1,20 +1,44 @@
 import { Flex, Text, Image, Button, Icon  } from '@chakra-ui/react';
+import { type } from 'os';
 
 import { RiEyeFill, RiAddLine } from "react-icons/ri";
+import { usePokedexContext } from '../../hooks/usePokedex';
 
-
-type ItemProps = {
+type Abilities = {
   name: string;
-  urlImage: string;
 }
 
-export function Item({ name, urlImage }: ItemProps) {
+type Moves = {
+  name: string;
+}
+
+interface PokemonItem {
+  pokemon: {
+    id: string;
+    name: string;
+    type: string;
+    url_image: string;
+    species: string;
+    abilities: Abilities[];
+    moves: Moves[];
+  }
+}
+
+
+export function Item({ pokemon }: PokemonItem) {
+
+  const { addPokemon } = usePokedexContext();
+
+  function handleAddPokemon(pokemon) {
+    addPokemon(pokemon);
+  }
 
   return (
     <>
       <Flex
-        h="245px"
-        w="245px"
+        h="200px"
+        w="200px"
+        margin="35px"
       >
         <Flex
           bg="#aba6b6"
@@ -44,7 +68,7 @@ export function Item({ name, urlImage }: ItemProps) {
                 fontSize="22px"
                 transform="rotate(+43deg)" 
               >
-                4
+                {pokemon.id}
               </Text>
             </Flex>
 
@@ -57,7 +81,7 @@ export function Item({ name, urlImage }: ItemProps) {
               justifyContent="center"
               borderRadius="5px"
             >
-              Fire
+              {type}
             </Flex>
 
           </Flex>
@@ -71,7 +95,7 @@ export function Item({ name, urlImage }: ItemProps) {
             <Image
               w="200px"
               h="160px" 
-              src={urlImage}
+              src={pokemon.url_image}
               alt="Pockemon"
             />
 
@@ -93,7 +117,7 @@ export function Item({ name, urlImage }: ItemProps) {
               borderRadius="15px"
             >
               <Text fontSize="20px">
-                {name}
+                {pokemon.name}
               </Text>
             </Flex>
 
@@ -119,13 +143,13 @@ export function Item({ name, urlImage }: ItemProps) {
               <Icon as={RiEyeFill} fontSize="30" />
             </Button>
             <Button
-              as="a"
               size="sm"
               h="50px"
               w="50px"
               borderRadius="50%"
               colorScheme=" #3AA05B;"
               marginEnd="15px"
+              onClick={() => handleAddPokemon(pokemon)}
             >
               <Icon as={RiAddLine} fontSize="30" />
             </Button>
