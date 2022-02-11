@@ -4,7 +4,8 @@ type Pokemon = {
   id: string;
   name: string;
   type: string;
-  url_image: string;
+  url_image_back: string;
+  url_image_front: string;
   species: string;
   abilities: Abilities[];
   moves: Moves[];
@@ -44,7 +45,8 @@ export async function getPokemon(offset: number, limit: number): Promise<Pokemon
       id: pokemon.id,
       name: pokemon.name,
       type: pokemon.types[0].type.name,
-      url_image: pokemon.sprites.back_default,
+      url_image_back: pokemon.sprites.back_default,
+      url_image_front: pokemon.sprites.front_default,
       species: pokemon.species.name,
       abilities: pokemon.abilities.map( ability => {
         return {
@@ -57,7 +59,10 @@ export async function getPokemon(offset: number, limit: number): Promise<Pokemon
         }
       })
     }
-  }) 
+  });
+  
+  console.log(pokemonFormatted);
+  console.log(pokemons);
 
   return pokemonFormatted;
 }

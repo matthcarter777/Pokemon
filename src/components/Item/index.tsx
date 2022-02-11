@@ -17,7 +17,8 @@ interface PokemonItem {
     id: string;
     name: string;
     type: string;
-    url_image: string;
+    url_image_back: string;
+    url_image_front: string;
     species: string;
     abilities: Abilities[];
     moves: Moves[];
@@ -52,8 +53,8 @@ export function Item({ pokemon }: PokemonItem) {
           <Flex>
 
             <Flex
-              marginTop="-10px"
-              marginStart="-24px"
+              marginTop="-20px"
+              marginStart="-20px"
               bg="#535662"
               w="46.69px"
               h="48.35px"
@@ -73,7 +74,8 @@ export function Item({ pokemon }: PokemonItem) {
             </Flex>
 
             <Flex
-              marginTop="-4"
+              marginTop="-15px"
+              marginRight="10px"
               bg="#F25D52"
               w="52px"
               h="30px"
@@ -81,7 +83,7 @@ export function Item({ pokemon }: PokemonItem) {
               justifyContent="center"
               borderRadius="5px"
             >
-              {type}
+              {pokemon.type}
             </Flex>
 
           </Flex>
@@ -93,9 +95,9 @@ export function Item({ pokemon }: PokemonItem) {
             justifyContent="center"
           >
             <Image
-              w="200px"
-              h="160px" 
-              src={pokemon.url_image}
+              w="250px"
+              h="180px" 
+              src={pokemon.url_image_front}
               alt="Pockemon"
             />
 
@@ -110,7 +112,7 @@ export function Item({ pokemon }: PokemonItem) {
               bg="#7E7394"
               w="147px"
               h="57px"
-              marginBottom="-30px"
+              marginTop="-40px"
               alignItems="center"
               justifyContent="center"
               border="2px solid #100B16"
@@ -123,38 +125,6 @@ export function Item({ pokemon }: PokemonItem) {
 
           </Flex>
 
-          <Flex
-            h="245px"
-            w="245px"
-            position="absolute"
-            alignItems="center"
-            justifyContent="center"
-
-          >
-            <Button
-              as="a"
-              size="sm"
-              h="50px"
-              w="50px"
-              borderRadius="50%"
-              colorScheme=" #49DBDF;"
-              marginEnd="15px"
-            >
-              <Icon as={RiEyeFill} fontSize="30" />
-            </Button>
-            <Button
-              size="sm"
-              h="50px"
-              w="50px"
-              borderRadius="50%"
-              colorScheme=" #3AA05B;"
-              marginEnd="15px"
-              onClick={() => handleAddPokemon(pokemon)}
-            >
-              <Icon as={RiAddLine} fontSize="30" />
-            </Button>
-    
-          </Flex>
         </Flex>
 
 
