@@ -31,7 +31,8 @@ type Pokemon = {
   id: string;
   name: string;
   type: string;
-  url_image: string;
+  url_image_back: string;
+  url_image_front: string;
   species: string;
   abilities: Abilities[];
   moves: Moves[];
@@ -64,7 +65,7 @@ export default function Home() {
   async function getData() {
     const typesByApi = await getTypes();
 
-    const pokemons = await getPokemon(10, 3);
+    const pokemons = await getPokemon(1, 6);
 
     setTypes(typesByApi);
     setPokemon(pokemons);
@@ -77,7 +78,7 @@ export default function Home() {
   }
  
   async function loginForm() {
-    const res = await login({ user, password });
+    await login({ user, password });
   }
 
   return (
@@ -107,7 +108,7 @@ export default function Home() {
           <Flex
             direction="column"
             w="100%"
-            h="30%"
+            h="20%"
             borderBottom="1px solid #707070"
           >
             <Flex
@@ -139,12 +140,13 @@ export default function Home() {
           </Flex>
           
           <Flex
-            padding="50"
+            display="grid"
+            gridTemplateColumns="repeat(3, 1fr)"
           >
 
             { pokemon.map(pokemon => {
               return (
-                <Item key={pokemon.id} pokemon ={ pokemon}/>
+                <Item key={pokemon.id} pokemon={pokemon}/>
               )
             }) }
 
