@@ -25,7 +25,7 @@ export function Header() {
       <Filter />
       
       { isLogger ? 
-        <Text as="a" href="/cart" margin="20px">
+        <Text as="a" href="/pokedex" margin="20px">
           { user }
         </Text>
         : 
