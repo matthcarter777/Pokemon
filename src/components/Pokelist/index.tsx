@@ -14,12 +14,12 @@ import { usePokedexContext } from '../../hooks/usePokedex';
 
 export function PokeList() {
 
-  const { pokemons, loadPokemons, removePokemon } = usePokedexContext();
+  const { pokemon, removePokemon } = usePokedexContext();
 
   return (
   <OrderedList listStyleType="none">
 
-    { pokemons.map(pokemon => {
+    { pokemon?.map(pokemon => {
       return (
         <ListItem key={pokemon.id} paddingBottom="20px">
           <Flex
@@ -38,15 +38,15 @@ export function PokeList() {
               border="2px solid #100B16"
             >
               <Image 
-                src={pokemon.img}
+                src={pokemon.url_image_front}
                 alt="Image"
-                w="50px"
-                h="50px"
+                w="80px"
+                h="60px"
               />
             </Box>
     
             <Box>
-                <Text fontWeight="bold" fontSize="20px" color="#535662">{ pokemon.name }</Text>
+              <Text fontWeight="bold" fontSize="20px" color="#535662">{ pokemon.name }</Text>
             </Box>
     
             <Flex

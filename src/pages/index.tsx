@@ -10,7 +10,8 @@ import {
   AlertDialogHeader ,
   AlertDialogContent ,
   AlertDialogOverlay ,
-  Input
+  Input,
+  Box
 } from '@chakra-ui/react';
 import { useRef, useState, useEffect } from 'react';
 
@@ -20,6 +21,7 @@ import { Item } from '../components/Item';
 import { useAuth } from '../hooks/useLogin';
 import { getTypes } from '../services/types';
 import { getPokemon } from '../services/pokemon';
+import { Pagination } from '../components/Paginations';
 
 
 type Type = {
@@ -52,6 +54,7 @@ export default function Home() {
   const [password, setPassword] = useState('');
   const [types, setTypes] = useState<Type[]>([] as Type[]);
   const [pokemon, setPokemon] = useState<Pokemon[]>([] as Pokemon[]);
+  const [page, setPage] = useState(1); 
   
   const { openModal, isOpen, closeModal, login, loggedIn } = useAuth();
 
@@ -69,8 +72,6 @@ export default function Home() {
 
     setTypes(typesByApi);
     setPokemon(pokemons);
-
-    console.log(pokemon);
   }
 
   async function getUser() {
@@ -111,6 +112,7 @@ export default function Home() {
             h="20%"
             borderBottom="1px solid #707070"
           >
+            
             <Flex
               marginTop="10"
               marginStart="20"
@@ -151,7 +153,21 @@ export default function Home() {
             }) }
 
           </Flex>
-  
+
+          <Flex
+            width="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-end"
+            padding="30px"
+          >
+            <Pagination 
+              totalCountOfRegisters={6}
+              currentPage={3}
+              onPageChange={setPage}
+            />
+          </Flex>
+
         </Flex>
       </Flex>
 

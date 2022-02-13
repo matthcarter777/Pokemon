@@ -47,9 +47,10 @@ export function Item({ pokemon }: PokemonItem) {
           direction="column"
           w="250px"
           _hover={{
-            filter: "brightness(0.7)"
+            filter: 'brightness(0.9)'
           }}
         >
+          
           <Flex>
 
             <Flex
@@ -91,17 +92,61 @@ export function Item({ pokemon }: PokemonItem) {
           <Flex
             w="100%"
             h="100%"
+            display="flex"
             alignItems="center"
             justifyContent="center"
           >
+
             <Image
-              w="250px"
-              h="180px" 
+              w="200px"
+              h="150px"
+              marginBottom="35px" 
               src={pokemon.url_image_front}
               alt="Pockemon"
             />
 
 
+          </Flex>
+
+          <Flex
+            w="100%"
+            h="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          > 
+            <Flex
+              marginTop="-200px"
+              opacity="0"
+              transition="opacity 0.2s"
+              _hover={{
+                opacity: "1"
+              }}
+            >
+          
+              <Button
+                  as="a"
+                  size="sm"
+                  h="50px"
+                  w="50px"
+                  borderRadius="50%"
+                  bg=" #49DBDF;"
+                  marginEnd="15px"
+                >
+                  <Icon as={RiEyeFill} fontSize="30" />
+                </Button>
+                <Button
+                  as="a"
+                  size="sm"
+                  h="50px"
+                  w="50px"
+                  borderRadius="50%"
+                  bg="#3AA05B"
+                  onClick={() => addPokemon(pokemon)}
+                >
+                  <Icon as={RiAddLine} fontSize="30" />
+                </Button>
+              </Flex>
           </Flex>
           
           <Flex

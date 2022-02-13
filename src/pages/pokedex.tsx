@@ -36,7 +36,7 @@ import { PokeList } from "../components/Pokelist";
 export default function Home() {
 
   const { loggedIn } = useAuth();
-  const { pokemons, loadPokemons, removePokemon } = usePokedexContext();
+  const { loadPokemons, removePokemon } = usePokedexContext();
 
   useEffect(() => {
     getUser();
@@ -118,7 +118,7 @@ export default function Home() {
             <Text>Ação</Text>
           </Flex>
 
-
+            
             <PokeList />
 
         

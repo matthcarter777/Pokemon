@@ -60,9 +60,6 @@ export async function getPokemon(offset: number, limit: number): Promise<Pokemon
       })
     }
   });
-  
-  console.log(pokemonFormatted);
-  console.log(pokemons);
 
   return pokemonFormatted;
 }
