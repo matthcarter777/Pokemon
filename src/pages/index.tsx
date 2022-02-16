@@ -11,7 +11,7 @@ import {
   AlertDialogContent ,
   AlertDialogOverlay ,
   Input,
-  Box
+  Image
 } from '@chakra-ui/react';
 import { useRef, useState, useEffect } from 'react';
 
@@ -186,15 +186,23 @@ export default function Home() {
             <AlertDialogHeader 
               fontSize="lg" 
               fontWeight="bold" 
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
              >
-              LOGIN - COMPETI
+              <Image
+                w="149.08px"
+                h="53.08px" 
+                src="https://github.com/FernandoRidam/pokemon/blob/master/src/assets/logo.png?raw=true" alt="logo" 
+              />
             </AlertDialogHeader>
 
             <AlertDialogBody>
               <Input  
                 type="text" 
-                placeholder="Usuarios" 
+                placeholder="Usuario" 
                 marginBottom="10px"
+                bg="#fff"
                 value={user}
                 onChange={event => setUser(event.target.value) }
                 color="#7E7394"
@@ -205,6 +213,7 @@ export default function Home() {
               <Input  
                 type="password" 
                 placeholder="Senha"
+                bg="#fff"
                 value={password}
                 onChange={event => setPassword(event.target.value) }  
                 color="#7E7394"
